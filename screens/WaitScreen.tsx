@@ -17,27 +17,29 @@ const WaitScreen = ({ navigation }: any) => {
 
       <LinearGradient
         colors={['#ff5f6d', '#8434f5', '#000']}
-        locations={[0, 0.4, 0.7]}
+        locations={[0, 0.4, 0.8]}
         style={styles.gradient}
       >
-        <View style={styles.content}>
-          {/* Imagen y título arriba */}
-          <Image source={require('../assets/welcome.png')} style={styles.logo} />
-          <Text style={styles.welcome}>Team Sync Pro!</Text>
+        <View style={styles.topSection}>
+          <Image source={require('../assets/welcome.png')} style={styles.image} />
+          <Text style={styles.brand}>Team Sync Pro</Text>
 
-          {/* Caja blanca con texto y botones */}
           <View style={styles.box}>
-            <Text style={styles.sub}>Si ya tienes la clave de acceso, haz clic en “Clave”.</Text>
+            <Text style={styles.subTitle}>
+              Si ya tienes la clave de acceso, haz clic en “Clave”.
+            </Text>
 
             <TouchableOpacity
               style={styles.button}
+              activeOpacity={0.8}
               onPress={() => navigation.navigate('Key')}
             >
-              <Text style={styles.buttonText}>Clave</Text>
+              <Text style={styles.buttonText}>Key</Text>
             </TouchableOpacity>
 
             <TouchableOpacity
-              style={[styles.button, { backgroundColor: '#8434f5' }]}
+              style={[styles.button, styles.backButton]}
+              activeOpacity={0.8}
               onPress={() => navigation.goBack()}
             >
               <Text style={styles.buttonText}>Back</Text>
@@ -50,37 +52,85 @@ const WaitScreen = ({ navigation }: any) => {
 };
 
 const styles = StyleSheet.create({
-  safeArea: { flex: 1, backgroundColor: '#000' },
-  gradient: { flex: 1, justifyContent: 'center', paddingHorizontal: 24 },
-  content: { alignItems: 'center', width: '100%' },
-
-  logo: { width: 140, height: 140, marginBottom: 20, resizeMode: 'contain' },
-
-  welcome: { color: '#fff', fontSize: 26, fontWeight: 'bold', marginBottom: 20 },
+  safeArea: {
+    flex: 1,
+    backgroundColor: '#000',
+  },
+  gradient: {
+    flex: 1,
+    justifyContent: 'center',
+    paddingHorizontal: 24,
+  },
+  topSection: {
+    alignItems: 'center',
+    marginTop: 0,
+    paddingHorizontal: 10,
+  },
+  image: {
+    width: 220,
+    height: 220,
+    borderRadius: 120,
+    borderWidth: 3,
+    borderColor: '#fff',
+    marginBottom: 16,
+  },
+  brand: {
+    color: '#fff',
+    fontSize: 28,
+    fontWeight: '900',
+    textShadowColor: '#ff5f6d',
+    textShadowOffset: { width: 1, height: 1 },
+    textShadowRadius: 8,
+    marginBottom: 28,
+  },
 
   box: {
     backgroundColor: '#fff',
-    borderRadius: 20,
-    padding: 20,
+    borderRadius: 25,
+    paddingVertical: 30,
+    paddingHorizontal: 25,
     width: '100%',
     alignItems: 'center',
+
+    // sombra suave moderna
+    shadowColor: '#ff5f6d',
+    shadowOffset: { width: 0, height: 8 },
+    shadowOpacity: 0.25,
+    shadowRadius: 20,
+    elevation: 10,
   },
 
-  sub: { color: '#000', fontSize: 16, textAlign: 'center', marginBottom: 20 },
+  subTitle: {
+    color: '#000',
+    fontWeight: '600',
+    fontSize: 18,
+    marginBottom: 24,
+    textAlign: 'center',
+  },
 
   button: {
     backgroundColor: '#ff5f6d',
-    paddingVertical: 12,
-    borderRadius: 30,
-    width: '100%',
+    paddingVertical: 16,
+    borderRadius: 35,
     alignItems: 'center',
-    marginTop: 10,
+    width: '70%',
+    marginBottom: 18,
+
+    shadowColor: '#ff5f6d',
+    shadowOffset: { width: 0, height: 8 },
+    shadowOpacity: 0.65,
+    shadowRadius: 15,
+    elevation: 12,
+  },
+
+  backButton: {
+    backgroundColor: '#8434f5',
   },
 
   buttonText: {
-    color: '#000',
+    color: '#fff',
     fontWeight: 'bold',
-    fontSize: 16,
+    fontSize: 20,
   },
 });
 

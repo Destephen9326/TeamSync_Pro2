@@ -8,7 +8,9 @@ import HomeScreen from './screens/HomeScreen';
 import WaitScreen from './screens/WaitScreen';
 import KeyScreen from './screens/KeyScreen';
 import CreateGroupScreen from './screens/CreateGroupScreen';
-
+import DashboardScreen from './screens/DashboardScreen'; 
+import Camara from './screens/Camara';
+import HistorialEvidencias from './screens/HistorialEvidencias';
 
 const Stack = createNativeStackNavigator();
 
@@ -22,6 +24,11 @@ export default function App() {
         <Stack.Screen name="Wait" component={WaitScreen} />
         <Stack.Screen name="Key" component={KeyScreen} />
         <Stack.Screen name="CreateGroup" component={CreateGroupScreen} />
+        <Stack.Screen name="Dashboard" component={DashboardScreen} />
+        <Stack.Screen name="Camara" component={Camara} />
+         <Stack.Screen name="HistorialEvidencias" component={HistorialEvidencias} />
+
+         
       </Stack.Navigator>
     </NavigationContainer>
   );

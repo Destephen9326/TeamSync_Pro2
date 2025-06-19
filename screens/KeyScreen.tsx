@@ -8,7 +8,7 @@ import {
   TextInput,
   Alert,
   StatusBar,
-  SafeAreaView
+  SafeAreaView,
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
@@ -43,12 +43,12 @@ const KeyScreen = ({ navigation }: any) => {
         locations={[0, 0.4, 0.7]}
         style={styles.gradient}
       >
-        <View style={styles.content}>
-          <Image source={require('../assets/welcome.png')} style={styles.logo} />
-          <Text style={styles.welcome}>Team Sync Pro!</Text>
+        <View style={styles.topSection}>
+          <Image source={require('../assets/welcome.png')} style={styles.image} />
+          <Text style={styles.brand}>Team Sync Pro</Text>
 
           <View style={styles.box}>
-            <Text style={styles.sub}>Ingresa la clave</Text>
+            <Text style={styles.subTitle}>Ingresa la clave</Text>
 
             <View style={styles.inputRow}>
               {key.map((k, index) => (
@@ -70,7 +70,7 @@ const KeyScreen = ({ navigation }: any) => {
               ))}
             </View>
 
-            <TouchableOpacity style={styles.button} onPress={handleSubmit}>
+            <TouchableOpacity style={styles.button} onPress={handleSubmit} activeOpacity={0.8}>
               <Text style={styles.buttonText}>Enviar</Text>
             </TouchableOpacity>
           </View>
@@ -81,21 +81,59 @@ const KeyScreen = ({ navigation }: any) => {
 };
 
 const styles = StyleSheet.create({
-  safeArea: { flex: 1, backgroundColor: '#000' },
-  gradient: { flex: 1, justifyContent: 'center', paddingHorizontal: 24 },
-  content: { alignItems: 'center' },
-
-  logo: { width: 140, height: 140, marginBottom: 20 },
-  welcome: { color: '#fff', fontSize: 26, fontWeight: 'bold', marginBottom: 30 },
-  sub: { color: '#000', fontSize: 18, marginBottom: 20 },
+  safeArea: {
+    flex: 1,
+    backgroundColor: '#000',
+  },
+  gradient: {
+    flex: 1,
+    justifyContent: 'center',
+    paddingHorizontal: 24,
+  },
+  topSection: {
+    alignItems: 'center',
+    marginTop: 0,
+    paddingHorizontal: 10,
+  },
+  image: {
+    width: 220,
+    height: 220,
+    borderRadius: 120,
+    borderWidth: 3,
+    borderColor: '#fff',
+    marginBottom: 16,
+  },
+  brand: {
+    color: '#fff',
+    fontSize: 28,
+    fontWeight: '900',
+    textShadowColor: '#ff5f6d',
+    textShadowOffset: { width: 1, height: 1 },
+    textShadowRadius: 8,
+    marginBottom: 28,
+  },
 
   box: {
     backgroundColor: '#fff',
-    borderRadius: 20,
-    padding: 24,
+    borderRadius: 25,
+    paddingVertical: 30,
+    paddingHorizontal: 25,
     width: '100%',
     alignItems: 'center',
-    elevation: 4,
+
+    shadowColor: '#ff5f6d',
+    shadowOffset: { width: 0, height: 8 },
+    shadowOpacity: 0.25,
+    shadowRadius: 20,
+    elevation: 10,
+  },
+
+  subTitle: {
+    color: '#000',
+    fontWeight: '600',
+    fontSize: 18,
+    marginBottom: 24,
+    textAlign: 'center',
   },
 
   inputRow: {
@@ -119,16 +157,22 @@ const styles = StyleSheet.create({
 
   button: {
     backgroundColor: '#ff5f6d',
-    paddingVertical: 14,
+    paddingVertical: 16,
     borderRadius: 30,
     alignItems: 'center',
     width: '100%',
+
+    shadowColor: '#ff5f6d',
+    shadowOffset: { width: 0, height: 6 },
+    shadowOpacity: 0.6,
+    shadowRadius: 10,
+    elevation: 8,
   },
 
   buttonText: {
-    color: '#000',
+    color: '#fff',
     fontWeight: 'bold',
-    fontSize: 16,
+    fontSize: 18,
   },
 });
 

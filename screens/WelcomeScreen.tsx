@@ -6,7 +6,6 @@ import {
   StyleSheet,
   TouchableOpacity,
   StatusBar,
-  Platform,
   SafeAreaView,
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -14,34 +13,33 @@ import { LinearGradient } from 'expo-linear-gradient';
 export default function WelcomeScreen({ navigation }: any) {
   return (
     <SafeAreaView style={styles.safeArea}>
-      <StatusBar
-        barStyle="light-content"
-        translucent
-        backgroundColor="transparent"
-      />
+      <StatusBar translucent barStyle="light-content" backgroundColor="transparent" />
 
       <LinearGradient
-        colors={['#ff5f6d', '#8434f5', '#000000']}
-        locations={[0, 0.4, 0.7]}
+        colors={['#ff5f6d', '#8434f5', '#000']}
+        locations={[0, 0.4, 0.8]}
         style={styles.gradient}
       >
         <View style={styles.topSection}>
-          <Image source={require('../assets/welcome.png')} style={styles.image} resizeMode="contain" />
-          <Text style={styles.title}>
-            Team<Text style={styles.bold}>Sync Pro</Text>
-          </Text>
+          <Image source={require('../assets/welcome.png')} style={styles.image} />
+          <Text style={styles.brand}>Team Sync Pro</Text>
+
+          <View style={styles.textContainer}>
+            <Text style={styles.subTitle}>🌟 Conecta Comparte Crea</Text>
+            <Text style={styles.description}>
+              TeamSync Pro es tu espacio para trabajar en equipo, intercambiar ideas y alcanzar metas juntos. ¡Haz que cada proyecto sea épico!
+            </Text>
+
+            <TouchableOpacity
+              style={styles.button}
+              activeOpacity={0.8}
+              onPress={() => navigation.navigate('LoginScreen')}
+            >
+              <Text style={styles.buttonText}>Comenzar</Text>
+            </TouchableOpacity>
+          </View>
         </View>
 
-        <View style={styles.bottomSection}>
-          <Text style={styles.subTitle}>🌟 Conecta Comparte Crea</Text>
-          <Text style={styles.description}>
-            TeamSync Pro es tu espacio para trabajar en equipo, intercambiar ideas y alcanzar metas juntos. ¡Haz que cada proyecto sea épico!
-          </Text>
-
-          <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('LoginScreen')}>
-            <Text style={styles.buttonText}>Comenzar</Text>
-          </TouchableOpacity>
-        </View>
       </LinearGradient>
     </SafeAreaView>
   );
@@ -50,53 +48,70 @@ export default function WelcomeScreen({ navigation }: any) {
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: '#000', // fondo base por si el gradiente tarda en cargar
+    backgroundColor: '#000',
   },
   gradient: {
     flex: 1,
-    justifyContent: 'space-between',
-    paddingVertical: 60,
-    paddingHorizontal: 20,
+    justifyContent: 'center',
+    paddingHorizontal: 24,
   },
   topSection: {
     alignItems: 'center',
-    marginTop: 50,
+    marginTop: 0,
+    paddingHorizontal: 10,
   },
   image: {
-    width: 180,
-    height: 180,
+    width: 220,
+    height: 220,
+    borderRadius: 120,
+    borderWidth: 3,
+    borderColor: '#fff',
+    marginBottom: 16, 
   },
-  title: {
-    fontSize: 32,
+  brand: {
     color: '#fff',
-    marginTop: 20,
-    fontWeight: '300',
+    fontSize: 28,
+    fontWeight: '900',
+    textShadowColor: '#ff5f6d',
+    textShadowOffset: { width: 1, height: 1 },
+    textShadowRadius: 8,
+    marginBottom: 28, // más espacio después de Team Sync Pro
   },
-  bold: {
-    fontWeight: 'bold',
-  },
-  bottomSection: {
-    padding: 30,
+  textContainer: {
+    width: '90%',
+    alignItems: 'center',
   },
   subTitle: {
     color: '#fff',
     fontWeight: 'bold',
-    fontSize: 16,
-    marginBottom: 10,
+    fontSize: 18,
+    marginBottom: 12,
+    textAlign: 'center',
+    textShadowColor: '#8434f5',
+    textShadowOffset: { width: 1, height: 1 },
+    textShadowRadius: 8,
   },
   description: {
-    color: '#ccc',
+    color: '#ddd',
     fontSize: 14,
     marginBottom: 30,
+    textAlign: 'center',
   },
   button: {
-    backgroundColor: '#fff',
-    paddingVertical: 12,
+    backgroundColor: '#ff5f6d',
+    paddingVertical: 16,
     borderRadius: 30,
     alignItems: 'center',
+    shadowColor: '#ff5f6d',
+    shadowOffset: { width: 0, height: 6 },
+    shadowOpacity: 0.6,
+    shadowRadius: 10,
+    elevation: 8,
+    width: '60%',
   },
   buttonText: {
-    color: '#000',
-    fontWeight: '600',
+    color: '#fff',
+    fontWeight: 'bold',
+    fontSize: 18,
   },
 });
